@@ -65,7 +65,7 @@ pip install -r requirements.txt
 - pytz==2023.3.post1
 - setuptools==68.2.2
 - sqlparse==0.4.4
--tzdata==2023.3
+- tzdata==2023.3
 
 ------------------------------------------------------
 
