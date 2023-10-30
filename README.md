@@ -6,6 +6,8 @@
 
 - Django Rest Framework (3.14.0)
 
+------------------------------------------------------
+
 ### Crear el entorno virtual:
 
 ```bash
@@ -15,6 +17,8 @@ pip install virtualenv
 ```bash
 virtualenv env
 ```
+
+------------------------------------------------------
 
 ### Activar el entorno virtual:
 
@@ -37,6 +41,8 @@ activate
 cd ../../
 ```
 
+------------------------------------------------------
+
 ### Instalar dependencias:
 
 ```bash
@@ -46,6 +52,7 @@ pip install -r requirements.txt
 > [!NOTE]
 > Esto te permite instalar las librerías
 
+------------------------------------------------------
 
 ### Dependencias usadas:
 
@@ -58,6 +65,7 @@ pip install -r requirements.txt
 - sqlparse==0.4.4
 - tzdata==2023.3
 
+------------------------------------------------------
 
 ### Activar la App:
 
@@ -73,6 +81,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+------------------------------------------------------
 
 ### Endpoints Users:
 
@@ -100,7 +109,7 @@ Mostrar todos los users:
     
     http://127.0.0.1:8000/users/getUsers/
 
--------------------------------------------------------
+------------------------------------------------------
 
 ### Endpoints DigitalObjects (Contenido):
 
@@ -130,7 +139,7 @@ Crear un comentario a un digitalObject (EN PROCESO...):
     
     http://127.0.0.1:8000/digitalObjects/getId/{id}/comment/
 
--------------------------------------------------------
+------------------------------------------------------
 
 #### Desarrollador:
 
