@@ -85,61 +85,73 @@ python manage.py runserver
 
 ------------------------------------------------------
 
-### Endpoints Users:
+### Endpoints User:
 
 Login:
 
-    http://127.0.0.1:8000/users/login/
+    http://127.0.0.1:8000/user/post/login/
 
 Register:
     
-    http://127.0.0.1:8000/users/register/
+    http://127.0.0.1:8000/user/post/register/
 
-Actualizar user:
+Register editor:
+
+    http://127.0.0.1:8000/user/post/register/editor/
+
+Register admin:
+
+    http://127.0.0.1:8000/user/post/register/admin/
+
+Actualizar usuarios:
     
-    http://127.0.0.1:8000/users/put/
+    http://127.0.0.1:8000/user/put/
 
 Perfil del usuario:
     
-    http://127.0.0.1:8000/users/userProfile/
+    http://127.0.0.1:8000/user/get/profile/
 
 Mostrar un usuario en especial {ID}:
     
-    http://127.0.0.1:8000/users/{id}/
+    http://127.0.0.1:8000/user/get/{id}/
 
-Mostrar todos los users:
+Mostrar todos los usuarios:
     
-    http://127.0.0.1:8000/users/getUsers/
+    http://127.0.0.1:8000/user/get/all/
 
 ------------------------------------------------------
 
-### Endpoints DigitalObjects (Contenido):
+### Endpoints DigitalObject (Contenido):
 
-Crear DigitalObject:
+Crear DigitalObject(Solo Administradores):
 
-    http://127.0.0.1:8000/digitalObjects/post/
+    http://127.0.0.1:8000/digitalObject/post/
+
+Actualizar DigitalObject(Administradores o Editores):
+
+    http://127.0.0.1:8000/digitalObject/put/{id}/
 
 Ver todos los DigitalObjects:
 
-    http://127.0.0.1:8000/digitalObjects/getAll/
+    http://127.0.0.1:8000/digitalObject/get/all/
 
-digitalObjects
+digitalObject por {ID}:
 
-    http://127.0.0.1:8000/digitalObjects/getId/{id}/
+    http://127.0.0.1:8000/digitalObject/getId/{id}/
 
 > [!WARNING]
 > Está en mantenimiento, funcionalidad inestable
 
-Darle un puntaje a un digitalObjects (EN PROCESO...):
+Darle un puntaje a un digitalObject (EN PROCESO...):
 
-    http://127.0.0.1:8000/digitalObjects/postRating/
+    http://127.0.0.1:8000/digitalObject/postRating/
 
 > [!WARNING]
 > Está en mantenimiento, funcionalidad inestable
 
 Crear un comentario a un digitalObject (EN PROCESO...):
     
-    http://127.0.0.1:8000/digitalObjects/getId/{id}/comment/
+    http://127.0.0.1:8000/digitalObject/getId/{id}/comment/
 
 ------------------------------------------------------
 
