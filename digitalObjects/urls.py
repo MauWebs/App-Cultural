@@ -4,8 +4,9 @@ from .views import *
 
 urlpatterns = [
        path('post/', postDigitalObject),
-       path('getAll/', getAllDigitalObjects),
-       path('getId/<int:pk>/', getIdDigitalObjects),
-       path('getId/<int:pk>/comment/', postComment),
-       path('postRating/<int:pk>/', postRating),
+       path('get/all/', getAllDigitalObjects),
+       path('put/<int:pk>/', putDigitalObject),
+       path('get/<int:pk>/', getIdDigitalObjects),
+       path('get/<int:pk>/comment/', postComment),
+       path('post/rating/<int:pk>/', postRating),
 ]

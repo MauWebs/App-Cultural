@@ -1,6 +1,6 @@
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Comment, DigitalObject, Rating
@@ -11,7 +11,7 @@ from .serializers import (CommentSerializer, DigitalObjectSerializer,
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def postDigitalObject(request):
     
     data = request.data
@@ -28,11 +28,9 @@ def postDigitalObject(request):
 
     serializer = DigitalObjectSerializer(digital, many=False)
     return Response(serializer.data)
-    
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def getAllDigitalObjects(request):
     
     digital = DigitalObject.objects.all()
@@ -48,7 +46,6 @@ def getAllDigitalObjects(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def getIdDigitalObjects(request, pk):
     
     try:
@@ -60,6 +57,34 @@ def getIdDigitalObjects(request, pk):
     except DigitalObject.DoesNotExist:
 
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def putDigitalObject(request, pk):
+ 
+    data = request.data
+    user = request.user
+
+    try:
+        digital = DigitalObject.objects.get(id=pk)
+    except DigitalObject.DoesNotExist:
+        return Response({"detail": "El objeto digital no existe"}, status=404)
+
+    if user.rol == 'editor' or user.rol == 'admin':
+        digital.title = data.get('title', digital.title)
+        digital.description = data.get('description', digital.description)
+        digital.place = data.get('place', digital.place)
+        digital.format = data.get('format', digital.format)
+        digital.tag = data.get('tag', digital.tag)
+        digital.url = data.get('url', digital.url)
+        digital.save()
+
+        serializer = DigitalObjectSerializer(digital, many=False)
+        return Response(serializer.data)
+    else:
+        return Response({"detail": "No tienes permiso para actualizar objetos digitales"}, status=403)
 
 
 # --------------------------------------------------------------------------- #

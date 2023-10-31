@@ -30,17 +30,78 @@ class MyTokenObtainPairView(TokenObtainPairView):
 def register(request):
     data = request.data
     try:
+
+        existing_user = User.objects.filter(email=data['email']).first()
+        if existing_user:
+            message = {'detail': 'El correo electrónico ya está registrado.'}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+    
+        data['rol'] = 'user'
         user = User.objects.create(
             user_name=data['user_name'],
+            last_name=data['last_name'],
             email=data['email'],
+            rol=data['rol'],
             password=make_password(data['password'])
         )
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
     except:
-        message = {'detail': 'Somthing went wrong'}
+        message = {'detail': 'Algo salió mal'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['POST'])
+def registerAdmin(request):
+    data = request.data
+    try:
+
+        existing_user = User.objects.filter(email=data['email']).first()
+        if existing_user:
+            message = {'detail': 'El correo electrónico ya está registrado.'}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+    
+        data['rol'] = 'admin'
+        data['is_staff'] = True
+        user = User.objects.create(
+            user_name=data['user_name'],
+            last_name=data['last_name'],
+            email=data['email'],
+            rol=data['rol'],
+            is_staff=data['is_staff'],
+            password=make_password(data['password'])
+        )
+        serializer = UserSerializerWithToken(user, many=False)
+        return Response(serializer.data)
+    except:
+        message = {'detail': 'Algo salió mal'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def registerEditor(request):
+    data = request.data
+    try:
+
+        existing_user = User.objects.filter(email=data['email']).first()
+        if existing_user:
+            message = {'detail': 'El correo electrónico ya está registrado.'}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+        data['rol'] = 'editor'
+        user = User.objects.create(
+            user_name=data['user_name'],
+            last_name=data['last_name'],
+            email=data['email'],
+            rol=data['rol'],
+            password=make_password(data['password'])
+        )
+        serializer = UserSerializerWithToken(user, many=False)
+        return Response(serializer.data)
+    except:
+        message = {'detail': 'Algo salió mal'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+    
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
