@@ -103,7 +103,7 @@ Register admin:
 
     http://127.0.0.1:8000/user/post/register/admin/
 
-Actualizar usuarios:
+Editar usuarios:
     
     http://127.0.0.1:8000/user/put/
 
@@ -127,7 +127,7 @@ Crear DigitalObject(Solo Administradores):
 
     http://127.0.0.1:8000/digitalObject/post/
 
-Actualizar DigitalObject(Administradores o Editores):
+Editar DigitalObject(Administradores o Editores):
 
     http://127.0.0.1:8000/digitalObject/put/{id}/
 
