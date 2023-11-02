@@ -123,8 +123,6 @@ Mostrar todos los usuarios:
 
 ### Endpoints DigitalObject (Contenido):
 
-<code style="color : fuchsia">text</code>
-
 Crear DigitalObject (Administradores):
 
     http://127.0.0.1:8000/digitalObject/post/
