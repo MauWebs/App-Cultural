@@ -123,11 +123,11 @@ Mostrar todos los usuarios:
 
 ### Endpoints DigitalObject (Contenido):
 
-Crear DigitalObject(Solo Administradores):
+Crear DigitalObject (Administradores):
 
     http://127.0.0.1:8000/digitalObject/post/
 
-Editar DigitalObject(Administradores o Editores):
+Editar DigitalObject (Administradores o Editores):
 
     http://127.0.0.1:8000/digitalObject/put/{id}/
 
@@ -154,11 +154,11 @@ Darle un puntaje a un digitalObject:
 
 ### Endpoints Suggestions (Sugerencias):
 
-Crear Suggestion:
+Crear Suggestion (Administradores):
 
     http://127.0.0.1:8000/suggestion/post/
 
-Editar Suggestion {ID}:
+Editar Suggestion {ID} (Administradores):
 
     http://127.0.0.1:8000/suggestion/put/{id}/
 
@@ -172,8 +172,11 @@ Mostar Suggestion por {ID}:
 
 ------------------------------------------------------
 
-### Endpoints Suggestions (Contacts):
+### Endpoints Contacts (Contacatanos):
 
+Crear un mensaje de contacto:
+
+    http://127.0.0.1:8000/contacts/post/
 
 ------------------------------------------------------
 
