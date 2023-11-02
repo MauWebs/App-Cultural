@@ -192,6 +192,14 @@ Eliminar contacto por {ID}:
 
 ------------------------------------------------------
 
+### Endpoints New (Noticia):
+
+Crear una Noticia (Administradores):
+
+    http://127.0.0.1:8000/news/post/
+
+------------------------------------------------------
+
 #### Desarrollador:
 
 [💻 Mau_Webs](https://github.com/MauWebs?tab=repositories)
