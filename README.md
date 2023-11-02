@@ -146,7 +146,9 @@ Crear un comentario a un digitalObject:
 > [!WARNING]
 > Está en mantenimiento (INESTABLE)
 
-Darle un puntaje a un digitalObject:
+```diff
+@@ text in purple (and bold)@@
+```
 
     http://127.0.0.1:8000/digitalObject/postRating/
 
