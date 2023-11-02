@@ -123,16 +123,6 @@ Mostrar todos los usuarios:
 
 ### Endpoints DigitalObject (Contenido):
 
-# Color Test Document
-
-<style>H1{color:Blue;}</style>
-<style>H2{color:DarkOrange;}</style>
-<style>p{color:Black;}</style>
-
-## Second Heading
-
-This is a test to see how the colors work.
-
 Crear DigitalObject (Administradores):
 
     http://127.0.0.1:8000/digitalObject/post/
