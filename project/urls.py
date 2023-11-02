@@ -26,6 +26,7 @@ urlpatterns = [
     path('digitalObject/', include('digitalObjects.urls')),
     path('suggestion/', include('suggestions.urls')),
     path('contacts/', include('contacts.urls')),
+    path('news/', include('news.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

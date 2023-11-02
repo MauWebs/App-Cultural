@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'digitalObjects',
     'suggestions',
     'contacts',
+    'news',
 ]
 
 CORS_ALLOWED_ORIGINS = [

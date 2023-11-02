@@ -1,7 +1,12 @@
 # Ignore Python byte code files
 __pycache__/
 *.pyc
-migrations/
+0001_initial.py
+0002_initial.py
+0003_initial.py
+0004_initial.py
+0005_initial.py
+0006_initial.py
 
 # Ignore database files
 db.sqlite3
