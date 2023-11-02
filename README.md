@@ -178,6 +178,18 @@ Crear un mensaje de contacto:
 
     http://127.0.0.1:8000/contacts/post/
 
+Mostrar todos los mensajes de contacto:
+
+    http://127.0.0.1:8000/get/all/
+
+Mostrar contacto por {ID}:
+
+    http://127.0.0.1:8000/get/{id}/
+    
+Eliminar contacto por {ID}:
+
+    http://127.0.0.1:8000/delete/{id}/
+
 ------------------------------------------------------
 
 #### Desarrollador:
