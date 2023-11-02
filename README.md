@@ -121,9 +121,7 @@ Mostrar todos los usuarios:
 
 ------------------------------------------------------
 
-```diff
-@@Endpoints DigitalObject (Contenido):@@
-```
+### Endpoints DigitalObject (Contenido):
 
 Crear DigitalObject (Administradores):
 
