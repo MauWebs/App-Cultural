@@ -121,7 +121,9 @@ Mostrar todos los usuarios:
 
 ------------------------------------------------------
 
-### Endpoints DigitalObject (Contenido):
+```diff
+### @@Endpoints DigitalObject (Contenido):@@
+```
 
 Crear DigitalObject (Administradores):
 
@@ -146,9 +148,7 @@ Crear un comentario a un digitalObject:
 > [!WARNING]
 > Está en mantenimiento (INESTABLE)
 
-```diff
-@@ text in purple (and bold)@@
-```
+ Darle un puntaje a un digitalObject:
 
     http://127.0.0.1:8000/digitalObject/postRating/
 
