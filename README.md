@@ -131,11 +131,11 @@ Editar DigitalObject (Administradores o Editores):
 
     http://127.0.0.1:8000/digitalObject/put/{id}/
 
-Ver todos los DigitalObjects:
+Mostrar todos los DigitalObjects:
 
     http://127.0.0.1:8000/digitalObject/get/all/
 
-digitalObject por {ID}:
+Mostrar digitalObject por {ID}:
 
     http://127.0.0.1:8000/digitalObject/getId/{id}/
 
@@ -197,6 +197,22 @@ Eliminar contacto por {ID}:
 Crear una Noticia (Administradores):
 
     http://127.0.0.1:8000/news/post/
+
+Editar una Noticia (Administradores o Editores):
+
+    http://127.0.0.1:8000/news/put/{id}/
+
+Eliminar una Noticia (Administradores):
+
+    http://127.0.0.1:8000/delete/{id}/
+
+Mostrar Noticias:
+
+    http://127.0.0.1:8000/news/get/all/
+
+Mostrar una Noticia por {ID}:
+
+    http://127.0.0.1:8000/news/get/{id}/
 
 ------------------------------------------------------
 
