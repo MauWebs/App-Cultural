@@ -172,7 +172,7 @@ Mostar Suggestion por {ID}:
 
 ------------------------------------------------------
 
-### Endpoints Contacts (Contacatanos):
+### Endpoints Contacts (Contactanos):
 
 Crear un mensaje de contacto:
 
