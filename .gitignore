@@ -1,6 +1,7 @@
 # Ignore Python byte code files
 __pycache__/
 *.pyc
+migrations/
 
 # Ignore database files
 db.sqlite3
