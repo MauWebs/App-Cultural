@@ -26,6 +26,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
+# --------------------------------------------------------------------------- #
+
+
 @api_view(['POST'])
 def register(request):
     data = request.data
@@ -49,6 +52,9 @@ def register(request):
     except:
         message = {'detail': 'Algo salió mal'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+# --------------------------------------------------------------------------- #
 
 
 @api_view(['POST'])
@@ -78,6 +84,9 @@ def registerAdmin(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
+# --------------------------------------------------------------------------- #
+
+
 @api_view(['POST'])
 def registerEditor(request):
     data = request.data
@@ -103,6 +112,9 @@ def registerEditor(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
     
 
+# --------------------------------------------------------------------------- #
+
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def putUser(request):
@@ -117,12 +129,18 @@ def putUser(request):
     return Response(serializer.data)
 
 
+# --------------------------------------------------------------------------- #
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
     user = request.user
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
+
+
+# --------------------------------------------------------------------------- #
 
 
 @api_view(['GET'])
@@ -133,9 +151,15 @@ def getSoloUser(request, pk):
     return Response(serializer.data)
 
 
+# --------------------------------------------------------------------------- #
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getUsers(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
+
+
+# --------------------------------------------------------------------------- #

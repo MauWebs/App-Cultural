@@ -39,10 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'corsheaders',
     'rest_framework',
+
     'users',
     'digitalObjects',
+    'suggestions',
+    'contacts',
 ]
 
 CORS_ALLOWED_ORIGINS = [

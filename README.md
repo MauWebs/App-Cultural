@@ -103,7 +103,7 @@ Register admin:
 
     http://127.0.0.1:8000/user/post/register/admin/
 
-Actualizar usuarios:
+Editar usuarios:
     
     http://127.0.0.1:8000/user/put/
 
@@ -127,7 +127,7 @@ Crear DigitalObject(Solo Administradores):
 
     http://127.0.0.1:8000/digitalObject/post/
 
-Actualizar DigitalObject(Administradores o Editores):
+Editar DigitalObject(Administradores o Editores):
 
     http://127.0.0.1:8000/digitalObject/put/{id}/
 
@@ -139,19 +139,41 @@ digitalObject por {ID}:
 
     http://127.0.0.1:8000/digitalObject/getId/{id}/
 
-> [!WARNING]
-> Está en mantenimiento, funcionalidad inestable
+Crear un comentario a un digitalObject:
+    
+    http://127.0.0.1:8000/digitalObject/getId/{id}/comment/
 
-Darle un puntaje a un digitalObject (EN PROCESO...):
+> [!WARNING]
+> Está en mantenimiento (INESTABLE)
+
+Darle un puntaje a un digitalObject:
 
     http://127.0.0.1:8000/digitalObject/postRating/
 
-> [!WARNING]
-> Está en mantenimiento, funcionalidad inestable
+------------------------------------------------------
 
-Crear un comentario a un digitalObject (EN PROCESO...):
-    
-    http://127.0.0.1:8000/digitalObject/getId/{id}/comment/
+### Endpoints Suggestions (Sugerencias):
+
+Crear Suggestion:
+
+    http://127.0.0.1:8000/suggestion/post/
+
+Editar Suggestion {ID}:
+
+    http://127.0.0.1:8000/suggestion/put/{id}/
+
+Mostar todas las Suggestions:
+
+    http://127.0.0.1:8000/suggestion/get/all/
+
+Mostar Suggestion por {ID}:
+
+    http://127.0.0.1:8000/suggestion/get/{id}/
+
+------------------------------------------------------
+
+### Endpoints Suggestions (Contacts):
+
 
 ------------------------------------------------------
 

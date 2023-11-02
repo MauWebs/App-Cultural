@@ -21,7 +21,7 @@ class RatingSerializer(serializers.ModelSerializer):
         
 # --------------------------------------------------------------------------- #
 
-class CommentSerializer(serializers.Serializer):
+class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ('id', 'user', 'description', 'digital_object', 'start_date')

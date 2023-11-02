@@ -3,6 +3,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 
+from users.models import User
+
 from .models import Comment, DigitalObject, Rating
 from .serializers import (CommentSerializer, DigitalObjectSerializer,
                           RatingSerializer)
@@ -13,9 +15,9 @@ from .serializers import (CommentSerializer, DigitalObjectSerializer,
 @api_view(['POST'])
 @permission_classes([IsAdminUser])
 def postDigitalObject(request):
-    
+
     data = request.data
-    
+
     digital = DigitalObject.objects.create(
         user=request.user,
         title=data['title'],
@@ -30,9 +32,12 @@ def postDigitalObject(request):
     return Response(serializer.data)
 
 
+# --------------------------------------------------------------------------- #
+
+
 @api_view(['GET'])
 def getAllDigitalObjects(request):
-    
+
     digital = DigitalObject.objects.all()
 
     serializer = DigitalObjectSerializer(digital, many=True)
@@ -45,9 +50,12 @@ def getAllDigitalObjects(request):
     return Response(serializer.data)
 
 
+# --------------------------------------------------------------------------- #
+
+
 @api_view(['GET'])
 def getIdDigitalObjects(request, pk):
-    
+
     try:
 
         digital = DigitalObject.objects.get(id=pk)
@@ -59,11 +67,13 @@ def getIdDigitalObjects(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
+# --------------------------------------------------------------------------- #
+
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def putDigitalObject(request, pk):
- 
+
     data = request.data
     user = request.user
 
@@ -83,6 +93,7 @@ def putDigitalObject(request, pk):
 
         serializer = DigitalObjectSerializer(digital, many=False)
         return Response(serializer.data)
+
     else:
         return Response({"detail": "No tienes permiso para actualizar objetos digitales"}, status=403)
 
@@ -93,14 +104,17 @@ def putDigitalObject(request, pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def postRating(request, pk):
+
     try:
+
         digital_object = DigitalObject.objects.get(id=pk)
         user = request.user
         rating_value = request.data.get('rating_value')
 
         if 1 <= rating_value <= 5:
             try:
-                rating = Rating.objects.get(user=user, digital_object=digital_object)
+                rating = Rating.objects.get(
+                    user=user, digital_object=digital_object)
                 rating.rating_value = rating_value
                 rating.save()
             except Rating.DoesNotExist:
@@ -114,6 +128,7 @@ def postRating(request, pk):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response({"error": "El valor de la calificación debe estar entre 1 y 5"}, status=status.HTTP_BAD_REQUEST)
+
     except DigitalObject.DoesNotExist:
         return Response({"error": "El objeto digital no existe"}, status=status.HTTP_NOT_FOUND)
 
@@ -124,14 +139,28 @@ def postRating(request, pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def postComment(request, pk):
-    if request.method == 'POST':
-        try:
-            digital_object = DigitalObject.objects.get(pk=pk)
-        except DigitalObject.DoesNotExist:
-            return Response({"detail": "DigitalObject no encontrado."}, status=status.HTTP_400_BAD_REQUEST)
+    data = request.data
+    digital_object = DigitalObject.objects.get(id=pk)
+    user = request.user
 
-        serializer = CommentSerializer(data=request.data)
+    if 'description' in data:
+        comment_description = data['description']
+
+        comment_data = {
+            'user': user.id,
+            'description': comment_description,
+            'digital_object': digital_object.id
+        }
+
+        serializer = CommentSerializer(data=comment_data)
+
         if serializer.is_valid():
-            serializer.save(digital_object=digital_object)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            serializer.save()
+            return Response(serializer.data, status=201)
+        else:
+            return Response({"error": serializer.errors}, status=400)
+    else:
+        return Response({"error": "El campo 'description' es obligatorio en los datos del comentario."}, status=400)
+
+
+# --------------------------------------------------------------------------- #
