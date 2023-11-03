@@ -87,11 +87,13 @@ python manage.py runserver
 
 ### Endpoints User:
 
-```bash
-"user_name":"name",
-"last_name":"lastname",
-"email":"user@gmail.com",
-"password":"123456"
+```js
+    {
+    "user_name":"name",
+    "last_name":"lastname",
+    "email":"user@gmail.com",
+    "password":"123456"
+    }
 ```
 
 Login:
@@ -130,13 +132,15 @@ Mostrar todos los usuarios:
 
 ### Endpoints DigitalObject (Contenido):
 
-```bash
-"title":"title",
-"description":"description",
-"place":"place",
-"format":"format",
-"tag":"tag",
-"url":"url"
+```js
+    {
+    "title":"title",
+    "description":"description",
+    "place":"place",
+    "format":"format",
+    "tag":"tag",
+    "url":"url"
+    }
 ```
 
 Crear DigitalObject (Administradores):
