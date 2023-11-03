@@ -121,12 +121,12 @@ Mostrar todos los usuarios:
 
 ```diff
 
-@@    "user_name":"admin",@@
-@@    "last_name":"admin",@@
-@@    "email":"admin@gmail.com",@@
-@@    "password":"123456"@@
+    @@""user_name":"admin",@@"
+    @@""last_name":"admin",@@"
+    @@""email":"admin@gmail.com",@@"
+    @@"password":"123456"@@
 
-´´´
+```
 
 ------------------------------------------------------
 
