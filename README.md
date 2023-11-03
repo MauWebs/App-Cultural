@@ -161,30 +161,33 @@ Mostrar digitalObject por {ID}:
 
 ------------------------------------------------------
 
-Crear un comentario a un digitalObject:
-    
-    http://127.0.0.1:8000/digitalObject/getId/{id}/comment/
+### Endpoints Crear un Comentario a un digitalObject:
 
 ```js
 {
     "description":"description"
 }
 ```
+    
+    http://127.0.0.1:8000/digitalObject/getId/{id}/comment/
 
 ------------------------------------------------------
 
+### Endpoints Crear un Rating a un digitalObject:
+
 > [!WARNING]
 > Está en mantenimiento (INESTABLE)
-
-Darle un puntaje a un digitalObject:
-
-    http://127.0.0.1:8000/digitalObject/postRating/
 
 ```js
 {
     "rating_value":5
 }
 ```
+
+Darle un puntaje a un digitalObject:
+
+    http://127.0.0.1:8000/digitalObject/postRating/
+
 
 ------------------------------------------------------
 
