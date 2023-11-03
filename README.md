@@ -123,7 +123,7 @@ Mostrar todos los usuarios:
 "user_name":"name",
 "last_name":"lastname",
 "email":"user@gmail.com",
-"password":"123456
+"password":"123456"
 ```
 
 ------------------------------------------------------
@@ -163,7 +163,7 @@ Crear un comentario a un digitalObject:
 "place":"place",
 "format":"format",
 "tag":"tag",
-"url":"url",
+"url":"url"
 ```
 
 ------------------------------------------------------
