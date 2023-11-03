@@ -123,8 +123,6 @@ def putUser(request):
     data = request.data
     user.user_name = data['user_name']
     user.email = data['email']
-    if data['password'] != '':
-        user.password = make_password(data['password'])
     user.save()
     return Response(serializer.data)
 
