@@ -119,11 +119,11 @@ Mostrar todos los usuarios:
     
     http://127.0.0.1:8000/user/get/all/
 
-```diff
-+   "user_name":"admin",
-+    "last_name":"admin",
-+    "email":"admin@gmail.com",
-+    password":"123456
+```bash
+"user_name":"name",
+"last_name":"lastname",
+"email":"user@gmail.com",
+"password":"123456
 ```
 
 ------------------------------------------------------
@@ -156,6 +156,15 @@ Crear un comentario a un digitalObject:
  Darle un puntaje a un digitalObject:
 
     http://127.0.0.1:8000/digitalObject/postRating/
+
+```bash
+"title":"title",
+"description":"description",
+"place":"place",
+"format":"format",
+"tag":"tag",
+"url":"url",
+```
 
 ------------------------------------------------------
 
