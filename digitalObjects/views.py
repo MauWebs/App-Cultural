@@ -126,6 +126,7 @@ def postRating(request, pk):
 
             serializer = RatingSerializer(rating)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
         else:
             return Response({"error": "El valor de la calificación debe estar entre 1 y 5"}, status=status.HTTP_BAD_REQUEST)
 
@@ -139,11 +140,13 @@ def postRating(request, pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def postComment(request, pk):
+
     data = request.data
     digital_object = DigitalObject.objects.get(id=pk)
     user = request.user
 
     if 'description' in data:
+       
         comment_description = data['description']
 
         comment_data = {
@@ -159,6 +162,7 @@ def postComment(request, pk):
             return Response(serializer.data, status=201)
         else:
             return Response({"error": serializer.errors}, status=400)
+    
     else:
         return Response({"error": "El campo 'description' es obligatorio en los datos del comentario."}, status=400)
 
