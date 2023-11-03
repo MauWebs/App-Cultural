@@ -88,12 +88,12 @@ python manage.py runserver
 ### Endpoints User:
 
 ```js
-    {
+{
     "user_name":"name",
     "last_name":"lastname",
     "email":"user@gmail.com",
     "password":"123456"
-    }
+}
 ```
 
 Login:
@@ -133,14 +133,14 @@ Mostrar todos los usuarios:
 ### Endpoints DigitalObject (Contenido):
 
 ```js
-    {
+{
     "title":"title",
     "description":"description",
     "place":"place",
     "format":"format",
     "tag":"tag",
     "url":"url"
-    }
+}
 ```
 
 Crear DigitalObject (Administradores):
