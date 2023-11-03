@@ -120,12 +120,12 @@ Mostrar todos los usuarios:
     http://127.0.0.1:8000/user/get/all/
 
 ```diff
-@@{
+@@
     "user_name":"admin",
     "last_name":"admin",
     "email":"admin@gmail.com",
     "password":"123456"
-}@@
+@@
 ´´´
 
 ------------------------------------------------------
