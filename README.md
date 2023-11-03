@@ -119,6 +119,15 @@ Mostrar todos los usuarios:
     
     http://127.0.0.1:8000/user/get/all/
 
+´´´dif
+@@{
+    "user_name":"admin",
+    "last_name":"admin",
+    "email":"admin@gmail.com",
+    "password":"123456"
+}@@
+´´´
+
 ------------------------------------------------------
 
 ### Endpoints DigitalObject (Contenido):
