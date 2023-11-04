@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'suggestions',
     'contacts',
     'news',
+    'virtualReality',
 ]
 
 CORS_ALLOWED_ORIGINS = [

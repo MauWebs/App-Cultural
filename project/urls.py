@@ -27,6 +27,7 @@ urlpatterns = [
     path('suggestion/', include('suggestions.urls')),
     path('contacts/', include('contacts.urls')),
     path('news/', include('news.urls')),
+    path('virtualReality/', include('virtualReality.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

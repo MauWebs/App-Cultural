@@ -3,8 +3,6 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 
-from users.models import User
-
 from .models import Comment, DigitalObject, Rating
 from .serializers import (CommentSerializer, DigitalObjectSerializer,
                           RatingSerializer)

@@ -122,8 +122,8 @@ def putUser(request):
     serializer = UserSerializerWithToken(user, many=False)
     data = request.data
     user.user_name = data['user_name']
+    user.last_name = data['last_name']
     user.email = data['email']
-    user.save()
     return Response(serializer.data)
 
 

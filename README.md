@@ -255,6 +255,25 @@ Mostrar una Noticia por {ID}:
 
 ------------------------------------------------------
 
+### Endpoints VirtualReality (Realidad Virtual):
+
+Crear una realidad virtual 3d (Administradores):
+
+    http://127.0.0.1:8000/virtualReality/post/
+
+```js
+{
+    "title":"title",
+    "description":"description",
+    "place":"place",
+    "format":"format",
+    "tag":"tag",
+    "url":"url"
+}
+```
+
+------------------------------------------------------
+
 #### Desarrollador:
 
 [💻 Mau_Webs](https://github.com/MauWebs?tab=repositories)
