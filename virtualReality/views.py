@@ -1,9 +1,10 @@
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
-from .models import VirtualReality
+from virtualReality.models import VirtualReality
+
 from .serializers import VirtualRealitySerializer
 
 # --------------------------------------------------------------------------- #
@@ -27,10 +28,33 @@ def postImage(request):
         
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    else:
 
-        else:
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED) 
 
-            return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED) 
+
+
+# --------------------------------------------------------------------------- #
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def postImage(request, pk):
+
+    user = request.user
+
+    if request.method == 'DELETE':
+
+        if user.rol == 'admin':
+
+            VirtualReality.object.delete(id=pk)
+
+            return Response({'message':'Fue eliminado correctamente'})
+
+    else:
+
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED) 
 
 
 # --------------------------------------------------------------------------- #

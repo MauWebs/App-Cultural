@@ -33,6 +33,32 @@ def postDigitalObject(request):
 # --------------------------------------------------------------------------- #
 
 
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteDigitalObject(request, pk):
+
+    user = request.user
+
+    if request.method == 'DELETE':
+
+        if user.rol == 'admin':
+
+            try:
+                digital_object = DigitalObject.objects.get(id=pk)
+                digital_object.delete()
+                return Response({'message': 'Fue eliminado correctamente'})
+
+            except DigitalObject.DoesNotExist:
+                return Response({'message': 'El objeto no existe'}, status=status.HTTP_404_NOT_FOUND)
+
+    else:
+
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+# --------------------------------------------------------------------------- #
+
+
 @api_view(['GET'])
 def getAllDigitalObjects(request):
 
@@ -53,15 +79,20 @@ def getAllDigitalObjects(request):
 
 @api_view(['GET'])
 def getIdDigitalObjects(request, pk):
-
     try:
-
         digital = DigitalObject.objects.get(id=pk)
-        serializer = DigitalObjectSerializer(digital)
-        return Response(serializer.data)
-
+        digital_serializer = DigitalObjectSerializer(digital)
+        
+        comments = Comment.objects.filter(digital_object=digital)
+        comment_serializer = CommentSerializer(comments, many=True)
+        
+        response_data = {
+            'digital_object': digital_serializer.data,
+            'comments': comment_serializer.data
+        }
+        
+        return Response(response_data)
     except DigitalObject.DoesNotExist:
-
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
@@ -124,7 +155,7 @@ def postRating(request, pk):
 
             serializer = RatingSerializer(rating)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
+
         else:
             return Response({"error": "El valor de la calificación debe estar entre 1 y 5"}, status=status.HTTP_BAD_REQUEST)
 
@@ -144,7 +175,7 @@ def postComment(request, pk):
     user = request.user
 
     if 'description' in data:
-       
+
         comment_description = data['description']
 
         comment_data = {
@@ -160,9 +191,35 @@ def postComment(request, pk):
             return Response(serializer.data, status=201)
         else:
             return Response({"error": serializer.errors}, status=400)
-    
+
     else:
         return Response({"error": "El campo 'description' es obligatorio en los datos del comentario."}, status=400)
+
+
+# --------------------------------------------------------------------------- #
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def deleteComment(request, pk):
+ 
+    if request.method == 'DELETE':
+       
+        try:
+            comment = Comment.objects.get(id=pk)
+
+            if comment.user == request.user:
+                comment.delete()
+                return Response({'message': 'Fue eliminado correctamente'})
+        
+            else:
+                return Response({'message': 'No tienes permiso para eliminar este comentario'}, status=status.HTTP_403_FORBIDDEN)
+     
+        except Comment.DoesNotExist:
+            return Response({'message': 'El comentario no existe'}, status=status.HTTP_404_NOT_FOUND)
+   
+    else:
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 # --------------------------------------------------------------------------- #

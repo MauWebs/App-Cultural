@@ -157,7 +157,11 @@ Mostrar todos los DigitalObjects:
 
 Mostrar digitalObject por {ID}:
 
-    http://127.0.0.1:8000/digitalObject/getId/{id}/
+    http://127.0.0.1:8000/digitalObject/get/{id}/
+
+Eliminar un digitalObject {ID}:
+
+    http://127.0.0.1:8000/digitalObject/delete/{id}/
 
 ------------------------------------------------------
 
@@ -170,7 +174,7 @@ Mostrar digitalObject por {ID}:
 ```
 Crear un comentario a un digitalObject:
 
-    http://127.0.0.1:8000/digitalObject/getId/{id}/comment/
+    http://127.0.0.1:8000/digitalObject/post/{id}/comment/
 
 ------------------------------------------------------
 
