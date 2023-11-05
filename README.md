@@ -172,9 +172,13 @@ Eliminar un digitalObject {ID}:
     "description":"description"
 }
 ```
-Crear un comentario a un digitalObject:
+Crear un comentario a un digitalObject {ID}:
 
     http://127.0.0.1:8000/digitalObject/post/{id}/comment/
+
+Eliminar un comentario a un digitalObject {ID}:
+
+    http://127.0.0.1:8000/digitalObject/delete/comment/{id}/
 
 ------------------------------------------------------
 
@@ -189,9 +193,9 @@ Crear un comentario a un digitalObject:
 }
 ```
 
-Darle un puntaje a un digitalObject:
+Darle un puntaje a un digitalObject {ID}:
 
-    http://127.0.0.1:8000/digitalObject/postRating/
+    http://127.0.0.1:8000/digitalObject/post/rating/{id}/
 
 ------------------------------------------------------
 
