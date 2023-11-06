@@ -58,12 +58,14 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
+    "https://puebloguarani.vercel.app"
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 
 ]
 
 CORS_ORIGIN_WHITELIST = [
+    "https://puebloguarani.vercel.app"
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
