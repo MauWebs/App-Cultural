@@ -280,6 +280,9 @@ Crear una realidad virtual 3d (Administradores):
 
     http://127.0.0.1:8000/virtualReality/post/
 
+Eliminar realidad virtual 3d {ID} (Administradores):
+
+    http://127.0.0.1:8000/virtualReality/delete/{id}/
 ------------------------------------------------------
 
 #### Desarrollador:
