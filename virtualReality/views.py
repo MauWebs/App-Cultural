@@ -28,9 +28,11 @@ def save_uploaded_image(uploaded_image):
 
 
 @api_view(['POST'])
+@permission_classes([IsAdminUser])
 def postVirtualReality(request):
 
     if request.method == 'POST':
+
         serializer = VirtualRealitySerializer(data=request.data, context={'request': request})
 
         if serializer.is_valid():
@@ -50,6 +52,7 @@ def postVirtualReality(request):
             )
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
