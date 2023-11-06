@@ -1,1 +1,1 @@
-¡Acá se guardan los datos!
+¡Acá se guardan las imagenes!
