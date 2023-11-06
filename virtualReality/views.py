@@ -12,7 +12,9 @@ from virtualReality.models import VirtualReality
 
 from .serializers import VirtualRealitySerializer
 
+
 # --------------------------------------------------------------------------- #
+
 
 def save_uploaded_image(uploaded_image):
    
@@ -27,6 +29,7 @@ def save_uploaded_image(uploaded_image):
 
 
 @api_view(['POST'])
+@permission_classes([IsAdminUser])
 def postVirtualReality(request):
    
     if request.method == 'POST':
