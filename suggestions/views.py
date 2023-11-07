@@ -1,5 +1,6 @@
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
 from .models import Suggestions
@@ -52,5 +53,31 @@ def getSuggestion(request, pk):
        
         return Response({"error": "La sugerencia no existe"}, status=status.HTTP_404_NOT_FOUND)
 
+
+# --------------------------------------------------------------------------- #
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteSuggestion(request, pk):
+
+    user = request.user
+
+    if request.method == 'DELETE':
+
+        if user.rol == 'admin':
+
+            try:
+                digital_object = Suggestions.objects.get(id=pk)
+                digital_object.delete()
+                return Response({'message': 'Fue eliminado correctamente'})
+
+            except Suggestions.DoesNotExist:
+                return Response({'message': 'El objeto no existe'}, status=status.HTTP_404_NOT_FOUND)
+
+    else:
+
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
 
 # --------------------------------------------------------------------------- #

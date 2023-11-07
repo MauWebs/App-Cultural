@@ -6,4 +6,5 @@ urlpatterns = [
     path('post/', postSuggestion),
     path('get/all/', getAllSuggestions),
     path('get/<int:pk>/', getSuggestion),
+    path('delete/<int:pk>/',deleteSuggestion),
 ]

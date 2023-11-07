@@ -200,26 +200,26 @@ def postComment(request, pk):
 
 
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def deleteComment(request, pk):
- 
+
+    user = request.user
+
     if request.method == 'DELETE':
-       
-        try:
-            comment = Comment.objects.get(id=pk)
 
-            if comment.user == request.user:
-                comment.delete()
+        if user.rol == 'admin':
+
+            try:
+                digital_object = Comment.objects.get(id=pk)
+                digital_object.delete()
                 return Response({'message': 'Fue eliminado correctamente'})
-        
-            else:
-                return Response({'message': 'No tienes permiso para eliminar este comentario'}, status=status.HTTP_403_FORBIDDEN)
-     
-        except Comment.DoesNotExist:
-            return Response({'message': 'El comentario no existe'}, status=status.HTTP_404_NOT_FOUND)
-   
-    else:
-        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
+            except Comment.DoesNotExist:
+                return Response({'message': 'El objeto no existe'}, status=status.HTTP_404_NOT_FOUND)
+
+    else:
+
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
 
 # --------------------------------------------------------------------------- #

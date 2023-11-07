@@ -4,9 +4,9 @@ Tareas:
 
 [x] GET = Virtual Reality
 
-[] ADMINISTRADORES = Borrar comentarios
+[x] ADMINISTRADORES = Borrar comentarios
 
-[] GET && DELETE = suggesions  
+[x] GET && DELETE = suggesions  
 
 [] HISTORIAS
 
