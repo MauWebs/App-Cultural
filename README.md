@@ -8,7 +8,13 @@ Tareas:
 
 [] GET && DELETE = suggesions  
 
+[] HISTORIAS
+
 [] MERCADO PAGO
+
+[] CREAR TABLA DE PRODUCTOS
+
+[] CREAR TABLA DE VENTAS
 
 ------------------------------------------------------
 

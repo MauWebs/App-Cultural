@@ -39,7 +39,6 @@ def postContact(request):
 
 
 @api_view(['GET'])
-@permission_classes({IsAuthenticated})
 def getAllContact(request):
 
     user = request.user
@@ -62,7 +61,6 @@ def getAllContact(request):
 
 
 @api_view(['GET'])
-@permission_classes({IsAuthenticated})
 def getIdContact(request, pk):
 
     user = request.user
