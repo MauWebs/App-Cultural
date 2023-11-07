@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'contacts',
     'news',
     'virtualReality',
+    'histories'
 ]
 
 CORS_ALLOWED_ORIGINS = [

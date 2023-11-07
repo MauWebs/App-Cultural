@@ -8,7 +8,7 @@ Tareas:
 
 [x] GET && DELETE = suggesions  
 
-[] HISTORIAS
+[x] HISTORIAS
 
 [] MERCADO PAGO
 
@@ -307,6 +307,18 @@ Eliminar realidad virtual 3D {ID} (Administradores):
 Mostrar todos realidad virtual 3D:
 
     http://127.0.0.1:8000/virtualReality/get/all/
+
+------------------------------------------------------
+
+```js
+{
+    "title":"titile",
+    "description":"description",
+    "format":"format",
+    "tag":"tag",
+    "url":"url"
+}
+```
 
 ------------------------------------------------------
 
