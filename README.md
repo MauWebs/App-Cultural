@@ -255,7 +255,7 @@ Mostar Suggestion por {ID}:
     "web":"web",
     "matter":"matter",
     "consultation":"consultation",
-    "message":"message",
+    "message":"message"
 }
 ```
 
