@@ -25,29 +25,6 @@ def postSuggestion(request):
 # --------------------------------------------------------------------------- #
 
 
-@api_view(['PUT'])
-def putSuggestion(request, pk):
-    try:
-
-        data = request.data
-        suggestion = Suggestions.objects.get(id=pk)
-        
-        if 'description' in data:
-            suggestion.description = data['description']
-        
-        suggestion.save()
-
-        serializer = SuggestionsSerializer(suggestion, many=False)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    
-    except Suggestions.DoesNotExist:
-        return Response({"error": "La sugerencia no existe"}, status=status.HTTP_404_NOT_FOUND)
-    
-
-# --------------------------------------------------------------------------- #
-
-
 @api_view(['GET'])
 def getAllSuggestions(request):
 

@@ -1,3 +1,17 @@
+------------------------------------------------------
+
+Tareas:
+
+[] ADMINISTRADORES = Borrar comentarios
+
+[] GET = Virtual Reality
+
+[] GET && DELETE = suggesions  
+
+[] MERCADO PAGO
+
+------------------------------------------------------
+
 # Install App:
 
 ### Tecnologías utilizadas:
