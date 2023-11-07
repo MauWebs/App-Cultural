@@ -16,7 +16,7 @@ from .serializers import VirtualRealitySerializer
 
 
 def save_uploaded_image(uploaded_image):
-   
+
     unique_filename = f'{str(uuid4())}.{uploaded_image.name.split(".")[-1]}'
     image_path = os.path.join(settings.MEDIA_ROOT, 'media', unique_filename)
 
@@ -33,26 +33,28 @@ def postVirtualReality(request):
 
     if request.method == 'POST':
 
-        serializer = VirtualRealitySerializer(data=request.data, context={'request': request})
+        serializer = VirtualRealitySerializer(
+            data=request.data, context={'request': request})
 
         if serializer.is_valid():
             uploaded_image = request.FILES.get('img')
-            
+
             if uploaded_image:
                 image_path = save_uploaded_image(uploaded_image)
                 serializer.validated_data['img'] = image_path
-            
+
             VirtualReality.objects.create(
+                user=request.user,
                 title=serializer.validated_data['title'],
                 description=serializer.validated_data['description'],
                 place=serializer.validated_data['place'],
                 format=serializer.validated_data['format'],
                 tag=serializer.validated_data['tag'],
-                image=serializer.validated_data['img'] 
+                image=serializer.validated_data['img']
             )
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
+
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -72,12 +74,30 @@ def deleteVirtualReality(request, pk):
 
             VirtualReality.object.delete(id=pk)
 
-            return Response({'message':'Fue eliminado correctamente'})
+            return Response({'message': 'Fue eliminado correctamente'})
 
     else:
 
-        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED) 
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 # --------------------------------------------------------------------------- #
 
+
+@api_view(['GET'])
+def getAllVirtualReality(request):
+
+    if request.method == 'GET':
+
+        virtual_reality= VirtualReality.objects.all()
+
+        serializer = VirtualRealitySerializer(virtual_reality, many=True)
+
+        return Response(serializer.data)
+
+    else:
+
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+# --------------------------------------------------------------------------- #

@@ -2,7 +2,7 @@
 
 Tareas:
 
-[] GET = Virtual Reality
+[x] GET = Virtual Reality
 
 [] ADMINISTRADORES = Borrar comentarios
 
@@ -296,13 +296,18 @@ Mostrar una Noticia por {ID}:
 }
 ```
 
-Crear una realidad virtual 3d (Administradores):
+Crear una realidad virtual 3D (Administradores):
 
     http://127.0.0.1:8000/virtualReality/post/
 
-Eliminar realidad virtual 3d {ID} (Administradores):
+Eliminar realidad virtual 3D {ID} (Administradores):
 
     http://127.0.0.1:8000/virtualReality/delete/{id}/
+
+Mostrar todos realidad virtual 3D:
+
+    http://127.0.0.1:8000/virtualReality/get/all/
+
 ------------------------------------------------------
 
 #### Desarrollador:
