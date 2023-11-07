@@ -1,6 +1,6 @@
 ------------------------------------------------------
 
-Tareas:
+Tareas Diarias:
 
 [x] GET = Virtual Reality
 
