@@ -2,9 +2,9 @@
 
 Tareas:
 
-[] ADMINISTRADORES = Borrar comentarios
-
 [] GET = Virtual Reality
+
+[] ADMINISTRADORES = Borrar comentarios
 
 [] GET && DELETE = suggesions  
 
