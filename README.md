@@ -221,6 +221,12 @@ Darle un puntaje a un digitalObject {ID}:
 
 ### Endpoints Suggestions (Sugerencias):
 
+```js
+{
+    "description":"description"
+}
+```
+
 Crear Suggestion (Administradores):
 
     http://127.0.0.1:8000/suggestion/post/
@@ -241,6 +247,18 @@ Mostar Suggestion por {ID}:
 
 ### Endpoints Contacts (Contactanos):
 
+```js
+{
+    "name":"name",
+    "lastname":"lastname",
+    "email":"email",
+    "web":"web",
+    "matter":"matter",
+    "consultation":"consultation",
+    "message":"message",
+}
+```
+
 Crear un mensaje de contacto:
 
     http://127.0.0.1:8000/contacts/post/
@@ -260,6 +278,14 @@ Eliminar contacto por {ID}:
 ------------------------------------------------------
 
 ### Endpoints New (Noticia):
+
+```js
+{
+    "title":"title",
+    "url":"url",
+    "description":"description"
+}
+```
 
 Crear una Noticia (Administradores):
 
