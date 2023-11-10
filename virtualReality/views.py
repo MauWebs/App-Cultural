@@ -31,33 +31,35 @@ def save_uploaded_image(uploaded_image):
 @api_view(['POST'])
 @permission_classes([IsAdminUser])
 def postVirtualReality(request):
+    data = request.data
 
     if request.method == 'POST':
 
-        serializer = VirtualRealitySerializer(
-            data=request.data, context={'request': request})
+        uploaded_image = request.FILES.get('img')
 
-        if serializer.is_valid():
-            uploaded_image = request.FILES.get('img')
-
-            if uploaded_image:
-                image_path = save_uploaded_image(uploaded_image)
-                serializer.validated_data['img'] = image_path
-
-            VirtualReality.objects.create(
+        if uploaded_image:
+            virtual_reality = VirtualReality.objects.create(
                 user=request.user,
-                title=serializer.validated_data['title'],
-                description=serializer.validated_data['description'],
-                place=serializer.validated_data['place'],
-                format=serializer.validated_data['format'],
-                tag=serializer.validated_data['tag'],
-                image=serializer.validated_data['img']
+                title=data['title'],
+                description=data['description'],
+                place=data['place'],
+                format=data['format'],
+                tag=data['tag'],
+                image=data['img'],
+                url=data['url']
             )
+
+            image_path = save_uploaded_image(uploaded_image)
+
+            virtual_reality.img = image_path
+            
+            virtual_reality.save()
+
+            serializer = VirtualRealitySerializer(virtual_reality, many=False)
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 # --------------------------------------------------------------------------- #
@@ -73,7 +75,9 @@ def deleteVirtualReality(request, pk):
 
         if user.rol == 'admin':
 
-            VirtualReality.object.delete(id=pk)
+            virtual_reality = VirtualReality.objects.get(id=pk)
+
+            virtual_reality.delete()
 
             return Response({'message': 'Fue eliminado correctamente'})
 
@@ -94,10 +98,6 @@ def getAllVirtualReality(request):
 
         serializer = VirtualRealitySerializer(virtual_reality, many=True)
 
-        virtual_reality_data = model_to_dict(virtual_reality)
-        
-        virtual_reality_data.pop('img', None)
-
         return Response(serializer.data)
 
     else:
@@ -112,20 +112,16 @@ def getAllVirtualReality(request):
 def getIdVirtualReality(request, pk):
 
     if request.method == 'GET':
-        
+
         virtual_reality = VirtualReality.objects.get(id=pk)
-        
+
         serializer = VirtualRealitySerializer(virtual_reality, many=False)
 
-        virtual_reality_data = model_to_dict(virtual_reality)
-        
-        virtual_reality_data.pop('url', None)
-
         return Response(serializer.data)
-    
+
     else:
 
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    
+
 
 # --------------------------------------------------------------------------- #

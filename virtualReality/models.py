@@ -13,7 +13,7 @@ class VirtualReality(models.Model):
     place = models.CharField(max_length=150)
     format = models.CharField(max_length=20)
     tag = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='media/', default='', blank='')
-    url = url = models.URLField()
+    image = models.ImageField(upload_to='media/', default='', blank=True)
+    url = models.URLField()
 
 # --------------------------------------------------------------------------- #

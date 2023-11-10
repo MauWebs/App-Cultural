@@ -360,6 +360,31 @@ Mostrar todos las histories:
 
 ------------------------------------------------------
 
+### Endpoints Products (Productos):
+
+```js
+{
+    "title":"titile",
+    "description":"description",
+    "price":"price",
+    "url":"url"
+}
+```
+
+Crear Products:
+
+    http://127.0.0.1:8000/histories/post/
+
+Mostrar todos las Products:
+
+    http://127.0.0.1:8000/histories/get/all/
+
+Mostrar todos las histories:
+
+    http://127.0.0.1:8000/histories/post/get/all/
+
+------------------------------------------------------
+
 #### Desarrollador:
 
 [💻 Mau_Webs](https://github.com/MauWebs?tab=repositories)
