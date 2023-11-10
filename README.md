@@ -332,6 +332,8 @@ Mostrar realidad virtual 3D por {ID}:
 
 ------------------------------------------------------
 
+### Endpoints Historis (Historias):
+
 ```js
 {
     "title":"titile",
@@ -341,6 +343,20 @@ Mostrar realidad virtual 3D por {ID}:
     "url":"url"
 }
 ```
+
+Mostrar todos realidad virtual 3D:
+
+Crear histories:
+
+    http://127.0.0.1:8000/histories/post/
+    
+Eliminar histories:
+    
+    http://127.0.0.1:8000/histories/post/delete/<int:pk>/
+    
+Mostrar todos las histories:
+
+    http://127.0.0.1:8000/histories/post/get/all/
 
 ------------------------------------------------------
 

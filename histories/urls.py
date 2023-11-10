@@ -3,7 +3,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    
        # -------------- History -------------- #
 
        # POST
@@ -12,5 +11,4 @@ urlpatterns = [
        path('delete/<int:pk>/', deleteHistory),
        # GET
        path('get/all/', getAllHistory),
-
 ]
