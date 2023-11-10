@@ -94,31 +94,12 @@ def getAllVirtualReality(request):
 
         serializer = VirtualRealitySerializer(virtual_reality, many=True)
 
-        return Response(serializer.data)
-
-    else:
-
-        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-
-
-# --------------------------------------------------------------------------- #
-
-
-@api_view(['GET'])
-def getIdVirtualRealityNoImg(request, pk):
-
-    if request.method == 'GET':
-        
-        virtual_reality = VirtualReality.objects.get(id=pk)
-        
-        serializer = VirtualRealitySerializer(virtual_reality, many=False)
-
         virtual_reality_data = model_to_dict(virtual_reality)
         
         virtual_reality_data.pop('img', None)
 
         return Response(serializer.data)
-    
+
     else:
 
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
@@ -128,7 +109,7 @@ def getIdVirtualRealityNoImg(request, pk):
 
 
 @api_view(['GET'])
-def getIdVirtualRealityNoUrl(request, pk):
+def getIdVirtualReality(request, pk):
 
     if request.method == 'GET':
         

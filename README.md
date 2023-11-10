@@ -326,6 +326,10 @@ Mostrar todos realidad virtual 3D:
 
     http://127.0.0.1:8000/virtualReality/get/all/
 
+Mostrar realidad virtual 3D por {ID}:
+
+    http://127.0.0.1:8000/virtualReality/get/{id}/
+
 ------------------------------------------------------
 
 ```js
