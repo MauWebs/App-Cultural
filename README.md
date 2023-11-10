@@ -344,8 +344,6 @@ Mostrar realidad virtual 3D por {ID}:
 }
 ```
 
-Mostrar todos realidad virtual 3D:
-
 Crear histories:
 
     http://127.0.0.1:8000/histories/post/
