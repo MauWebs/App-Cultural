@@ -2,14 +2,6 @@
 
 Tareas Diarias:
 
-[x] GET = Virtual Reality
-
-[x] ADMINISTRADORES = Borrar comentarios
-
-[x] GET && DELETE = suggesions  
-
-[x] HISTORIAS
-
 [] MERCADO PAGO
 
 [] CREAR TABLA DE PRODUCTOS

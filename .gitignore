@@ -59,6 +59,7 @@ dist/
 # Ignore virtual environment directories
 venv/
 env/
+env
 __env/
 
 # Ignore migrations (only if you're using South or Django < 1.7)

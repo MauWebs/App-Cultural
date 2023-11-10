@@ -5,7 +5,6 @@ from users.models import User
 
 # --------------------------------------------------------------------------- #
 
-
 class VirtualReality(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     start_date = models.DateTimeField(default=timezone.now)
@@ -15,6 +14,6 @@ class VirtualReality(models.Model):
     format = models.CharField(max_length=20)
     tag = models.CharField(max_length=200)
     image = models.ImageField(upload_to='media/', default='', blank='')
-
+    url = url = models.URLField()
 
 # --------------------------------------------------------------------------- #

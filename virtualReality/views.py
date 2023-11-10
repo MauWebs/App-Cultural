@@ -3,6 +3,7 @@ from uuid import uuid4
 
 from django.conf import settings
 from django.core.files.storage import default_storage
+from django.forms import model_to_dict
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
@@ -89,7 +90,7 @@ def getAllVirtualReality(request):
 
     if request.method == 'GET':
 
-        virtual_reality= VirtualReality.objects.all()
+        virtual_reality = VirtualReality.objects.all()
 
         serializer = VirtualRealitySerializer(virtual_reality, many=True)
 
@@ -99,5 +100,51 @@ def getAllVirtualReality(request):
 
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
+
+# --------------------------------------------------------------------------- #
+
+
+@api_view(['GET'])
+def getIdVirtualRealityNoImg(request, pk):
+
+    if request.method == 'GET':
+        
+        virtual_reality = VirtualReality.objects.get(id=pk)
+        
+        serializer = VirtualRealitySerializer(virtual_reality, many=False)
+
+        virtual_reality_data = model_to_dict(virtual_reality)
+        
+        virtual_reality_data.pop('img', None)
+
+        return Response(serializer.data)
+    
+    else:
+
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+# --------------------------------------------------------------------------- #
+
+
+@api_view(['GET'])
+def getIdVirtualRealityNoUrl(request, pk):
+
+    if request.method == 'GET':
+        
+        virtual_reality = VirtualReality.objects.get(id=pk)
+        
+        serializer = VirtualRealitySerializer(virtual_reality, many=False)
+
+        virtual_reality_data = model_to_dict(virtual_reality)
+        
+        virtual_reality_data.pop('url', None)
+
+        return Response(serializer.data)
+    
+    else:
+
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
 
 # --------------------------------------------------------------------------- #
