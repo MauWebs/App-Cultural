@@ -371,15 +371,15 @@ Mostrar todos las histories:
 
 Crear Products:
 
-    http://127.0.0.1:8000/histories/post/
+    http://127.0.0.1:8000/products/post/
 
 Mostrar todos las Products:
 
-    http://127.0.0.1:8000/histories/get/all/
+    http://127.0.0.1:8000/products/get/all/
 
 Mostrar todos las histories:
 
-    http://127.0.0.1:8000/histories/post/get/all/
+    http://127.0.0.1:8000/products/post/get/all/
 
 ------------------------------------------------------
 
