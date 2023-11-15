@@ -5,5 +5,5 @@ from .views import *
 urlpatterns = [
     path('post/', postProduct),
     path('get/all/', getAllProduct),
-    path('delete/<int:pk>/', deleteProduct)    
+    path('delete/<int:pk>/', deleteProduct),
 ]

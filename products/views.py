@@ -34,10 +34,10 @@ def postProduct(request):
 
     else:
         return Response({'error': 'ERROR METHOD, USE "POST"'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    
+
 
 # --------------------------------------------------------------------------- #
-    
+
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
@@ -61,7 +61,7 @@ def deleteProduct(request, pk):
 
 
 # --------------------------------------------------------------------------- #
-    
+
 
 @api_view(['GET'])
 def getAllProduct(request):
@@ -77,6 +77,6 @@ def getAllProduct(request):
     else:
 
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    
+
 
 # --------------------------------------------------------------------------- #

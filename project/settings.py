@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'virtualReality',
     'histories',
     'products',
+    'sales',
 ]
 
 CORS_ALLOWED_ORIGINS = [

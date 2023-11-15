@@ -2,11 +2,11 @@
 
 Tareas Diarias:
 
-[] MERCADO PAGO
+[] PAYPAL
 
-[] CREAR TABLA DE PRODUCTOS
+[] CREAR TABLA DE VENTAS POR USUARIO
 
-[] CREAR TABLA DE VENTAS
+[] 
 
 ------------------------------------------------------
 

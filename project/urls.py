@@ -17,7 +17,6 @@ Including another URLconf
 
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
@@ -30,6 +29,7 @@ urlpatterns = [
     path('virtualReality/', include('virtualReality.urls')),
     path('histories/', include('histories.urls')),
     path('products/', include('products.urls')),
+    path('sales/', include('sales.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
