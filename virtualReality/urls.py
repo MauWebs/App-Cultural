@@ -6,6 +6,5 @@ urlpatterns = [
     path('post/', postVirtualReality),
     path('get/all/', getAllVirtualReality),
     path('get/<int:pk>/',getIdVirtualReality),
-    path('delete/<int:pk>/', deleteVirtualReality),
-    path('upload-image/<int:pk>/', uploadImage),
+    path('delete/<int:pk>/', deleteVirtualReality)    
 ]
