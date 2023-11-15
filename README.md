@@ -320,6 +320,10 @@ Mostrar realidad virtual 3D por {ID}:
 
     http://127.0.0.1:8000/virtualReality/get/{id}/
 
+Crear o Actualizar imagen 3D por {ID}:
+
+    http://127.0.0.1:8000/virtualReality/upload-image/{id}/
+
 ------------------------------------------------------
 
 ### Endpoints Historis (Historias):

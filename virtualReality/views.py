@@ -1,12 +1,6 @@
-import os
-from uuid import uuid4
-
-from django.conf import settings
-from django.core.files.storage import default_storage
-from django.forms import model_to_dict
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 
 from virtualReality.models import VirtualReality
@@ -16,16 +10,33 @@ from .serializers import VirtualRealitySerializer
 # --------------------------------------------------------------------------- #
 
 
-def save_uploaded_image(uploaded_image):
+@api_view(['POST', 'PUT'])
+@permission_classes([IsAuthenticated])
+def uploadImage(request, pk):
+   
+    try:
+        user = VirtualReality.objects.get(id=pk)
+   
+    except VirtualReality.DoesNotExist:
+        return Response({'error': 'Usuario no encontrado'}, status=status.HTTP_404_NOT_FOUND)
 
-    unique_filename = f'{str(uuid4())}.{uploaded_image.name.split(".")[-1]}'
-    image_path = os.path.join(settings.MEDIA_ROOT, 'media', unique_filename)
+    if request.method in ['POST', 'PUT']:
+   
+        if 'image' in request.FILES:
+   
+            user.image = request.FILES['image']
+            user.save()
+            serializer = VirtualRealitySerializer(user)
+            return Response({'message': 'Imagen subida exitosamente', 'user_data': serializer.data})
+   
+        else:
+            return Response({'error': 'No se proporcionó ninguna imagen'}, status=status.HTTP_400_BAD_REQUEST)
+   
+    else:
+        return Response({'error': 'Método no permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-    with default_storage.open(image_path, 'wb') as destination:
-        for chunk in uploaded_image.chunks():
-            destination.write(chunk)
 
-    return os.path.join('media', unique_filename)
+# --------------------------------------------------------------------------- #
 
 
 @api_view(['POST'])
@@ -35,29 +46,19 @@ def postVirtualReality(request):
 
     if request.method == 'POST':
 
-        uploaded_image = request.FILES.get('img')
+        virtual_reality = VirtualReality.objects.create(
+            user=request.user,
+            title=data['title'],
+            description=data['description'],
+            place=data['place'],
+            format=data['format'],
+            tag=data['tag'],
+            url=data['url']
+        )
 
-        if uploaded_image:
-            virtual_reality = VirtualReality.objects.create(
-                user=request.user,
-                title=data['title'],
-                description=data['description'],
-                place=data['place'],
-                format=data['format'],
-                tag=data['tag'],
-                image=data['img'],
-                url=data['url']
-            )
+        serializer = VirtualRealitySerializer(virtual_reality, many=False)
 
-            image_path = save_uploaded_image(uploaded_image)
-
-            virtual_reality.img = image_path
-            
-            virtual_reality.save()
-
-            serializer = VirtualRealitySerializer(virtual_reality, many=False)
-
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
