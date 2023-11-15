@@ -1,15 +1,5 @@
 ------------------------------------------------------
 
-Tareas Diarias:
-
-[] PAYPAL
-
-[] CREAR TABLA DE VENTAS POR USUARIO
-
-[] 
-
-------------------------------------------------------
-
 # Install App:
 
 ### Tecnologías utilizadas:
@@ -377,9 +367,30 @@ Mostrar todos las Products:
 
     http://127.0.0.1:8000/products/get/all/
 
+Eliminar Products {id}:
+
+    http://127.0.0.1:8000/products/delete/{id}/
+
+------------------------------------------------------
+
+### Endpoints Sales (Ventas):
+
+```js
+{
+    "products": ["product", "product", "product"],
+    "total_amount": "total_amount",
+}
+```
+
+Crear Products:
+
+    http://127.0.0.1:8000/sales/post/
+
+
 Mostrar todos las histories:
 
-    http://127.0.0.1:8000/products/post/get/all/
+    http://127.0.0.1:8000/sales/get/all/
+
 
 ------------------------------------------------------
 
