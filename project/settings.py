@@ -46,11 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_crontab',
+    'dbbackup',
     'corsheaders',
     'rest_framework',
-    'dbbackup',
 
+    'private',
     'users',
     'digitalObjects',
     'suggestions',
@@ -61,6 +61,9 @@ INSTALLED_APPS = [
     'products',
     'sales',
 ]
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
 
 CORS_ALLOWED_ORIGINS = [
     "https://puebloguarani.vercel.app",
@@ -165,15 +168,6 @@ DATABASES = {
         conn_max_age=600
     )
 }
-
-# dbbackup
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
-
-# cron
-CRONJOBS = [
-    ('0 0 */3 * *', 'project.cron.my_backup') 
-]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

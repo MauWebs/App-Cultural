@@ -395,6 +395,13 @@ Mostrar todos las histories:
 
     http://127.0.0.1:8000/sales/get/all/
 
+------------------------------------------------------
+
+### Endpoints backup (Respaldo):
+
+Crear un backup:
+
+    http://127.0.0.1:8000/private/post/backup/
 
 ------------------------------------------------------
 
